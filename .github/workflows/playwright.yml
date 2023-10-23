@@ -28,7 +28,7 @@ jobs:
           NAVER_PW: ${{ secrets.NAVER_PW }}
           NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
           NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
-          API_AUTH_FILE: ${{ API_AUTH_FILE }}
+          API_AUTH_FILE: ${{ secrets.API_AUTH_FILE }}
           REDIRECT_URL: ${{ secrets.REDIRECT_URL }}
           CAFE_CLUB_ID: ${{ secrets.CAFE_CLUB_ID }}
           CAFE_MENU_ID: ${{ secrets.CAFE_MENU_ID }}

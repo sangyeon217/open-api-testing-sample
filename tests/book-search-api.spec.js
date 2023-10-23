@@ -1,10 +1,10 @@
 import { test, expect } from "@playwright/test";
-import { NewsSearchAPI } from "../apis/search/NewsSearchAPI";
+import { BookSearchAPI } from "../apis/search/BookSearchAPI";
 import "dotenv/config";
 
-test("Get News API Request", async ({ request }) => {
-  const newsSearchAPI = new NewsSearchAPI("태풍");
-  const response = await request.get(newsSearchAPI.url, {
+test("Get Book API Request", async ({ request }) => {
+  const bookSearchAPI = new BookSearchAPI("자바스크립트");
+  const response = await request.get(bookSearchAPI.url, {
     headers: {
       "X-Naver-Client-Id": process.env.NAVER_CLIENT_ID,
       "X-Naver-Client-Secret": process.env.NAVER_CLIENT_SECRET,
@@ -22,5 +22,6 @@ test("Get News API Request", async ({ request }) => {
 
   const index = 0;
   expect(responseBody.items[index].title).toEqual(expect.any(String));
+  expect(responseBody.items[index].author).toEqual(expect.any(String));
   expect(responseBody.items[index].description).toEqual(expect.any(String));
 });

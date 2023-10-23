@@ -30,12 +30,10 @@ test.beforeAll(async ({ browser, request }) => {
   // await appAccessAgreePage.submitBtn.click();
   await page.waitForLoadState("networkidle");
 
-  console.log(page.url());
   const codeRegex = /\?code=(.*)&state=/;
   const codeMatch = page.url().match(codeRegex);
   expect(codeMatch).toBeTruthy();
   const code = codeMatch[1];
-  console.log(code);
 
   // 접근 토큰 발급
   const authTokenAPI = new AuthTokenAPI({

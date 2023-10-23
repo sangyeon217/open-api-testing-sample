@@ -38,6 +38,12 @@ module.exports = defineConfig({
       testMatch: "*-search-api.spec.js",
     },
 
+    {
+      name: "cafe_api",
+      testMatch: "cafe-*-api.spec.js",
+      use: { ...devices["Desktop Chrome"] },
+    },
+
     // {
     //   name: "chromium",
     //   use: { ...devices["Desktop Chrome"] },

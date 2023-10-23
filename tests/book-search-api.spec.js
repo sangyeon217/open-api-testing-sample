@@ -1,6 +1,5 @@
 import { test, expect } from "@playwright/test";
 import { BookSearchAPI } from "../apis/search/BookSearchAPI";
-import "dotenv/config";
 
 test("Get Book API Request", async ({ request }) => {
   const bookSearchAPI = new BookSearchAPI("자바스크립트");

@@ -1,6 +1,5 @@
 import { test, expect } from "@playwright/test";
 import { NewsSearchAPI } from "../apis/search/NewsSearchAPI";
-import "dotenv/config";
 
 test("Get News API Request", async ({ request }) => {
   const newsSearchAPI = new NewsSearchAPI("태풍");

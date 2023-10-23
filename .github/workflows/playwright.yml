@@ -19,6 +19,7 @@ jobs:
           echo "NAVER_PW=$NAVER_PW" >> .env
           echo "NAVER_CLIENT_ID=$NAVER_CLIENT_ID" >> .env
           echo "NAVER_CLIENT_SECRET=$NAVER_CLIENT_SECRET" >> .env
+          echo "AUTH_FILE_DIR=$AUTH_FILE_DIR" >> .env
           echo "API_AUTH_FILE=$API_AUTH_FILE" >> .env
           echo "REDIRECT_URL=$REDIRECT_URL" >> .env
           echo "CAFE_CLUB_ID=$CAFE_CLUB_ID" >> .env
@@ -28,6 +29,7 @@ jobs:
           NAVER_PW: ${{ secrets.NAVER_PW }}
           NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
           NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
+          AUTH_FILE_DIR: ${{ secrets.AUTH_FILE_DIR }}
           API_AUTH_FILE: ${{ secrets.API_AUTH_FILE }}
           REDIRECT_URL: ${{ secrets.REDIRECT_URL }}
           CAFE_CLUB_ID: ${{ secrets.CAFE_CLUB_ID }}

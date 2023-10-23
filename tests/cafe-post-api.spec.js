@@ -46,9 +46,14 @@ test.beforeAll(async ({ browser, request }) => {
   });
   const response = await request.post(authTokenAPI.url);
   const responseBody = await response.json();
-
   expect(response.status()).toBe(200);
-  fs.writeFileSync(process.env.API_AUTH_FILE, JSON.stringify(responseBody));
+
+  const authFileDir = process.env.AUTH_FILE_DIR;
+  const authFile = authFileDir + process.env.API_AUTH_FILE;
+  if (!fs.existsSync(authFileDir)) {
+    fs.mkdirSync(authFileDir, { recursive: true });
+  }
+  fs.writeFileSync(authFile, JSON.stringify(responseBody));
 });
 
 test.afterAll(async ({ request }) => {
@@ -56,9 +61,8 @@ test.afterAll(async ({ request }) => {
   await page.close();
 
   // API 접근 토큰 삭제
-  const authTokenResponseBody = JSON.parse(
-    fs.readFileSync(process.env.API_AUTH_FILE)
-  );
+  const authFile = process.env.AUTH_FILE_DIR + process.env.API_AUTH_FILE;
+  const authTokenResponseBody = JSON.parse(fs.readFileSync(authFile));
   const accessToken = authTokenResponseBody.access_token;
 
   const authTokenAPI = new AuthTokenAPI({
@@ -75,9 +79,8 @@ test.afterAll(async ({ request }) => {
 });
 
 test("Post Cafe Post API Request", async ({ request }) => {
-  const authTokenResponseBody = JSON.parse(
-    fs.readFileSync(process.env.API_AUTH_FILE)
-  );
+  const authFile = process.env.AUTH_FILE_DIR + process.env.API_AUTH_FILE;
+  const authTokenResponseBody = JSON.parse(fs.readFileSync(authFile));
   const accessToken = authTokenResponseBody.access_token;
 
   const cafePostTitle = "Playwright Test";

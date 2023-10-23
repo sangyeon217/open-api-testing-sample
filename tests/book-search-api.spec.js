@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { BookSearchAPI } from "../apis/search/BookSearchAPI";
 
-test("Get Book API Request", async ({ request }) => {
+test("Get Book Search API Request", async ({ request }) => {
   const bookSearchAPI = new BookSearchAPI("자바스크립트");
   const response = await request.get(bookSearchAPI.url, {
     headers: {

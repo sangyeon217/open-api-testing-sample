@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { NewsSearchAPI } from "../apis/search/NewsSearchAPI";
 
-test("Get News API Request", async ({ request }) => {
+test("Get News Search API Request", async ({ request }) => {
   const newsSearchAPI = new NewsSearchAPI("태풍");
   const response = await request.get(newsSearchAPI.url, {
     headers: {

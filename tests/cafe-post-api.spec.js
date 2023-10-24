@@ -4,14 +4,13 @@ import { CafePostAPI } from "../apis/cafe/CafePostAPI";
 import { AppLoginPage } from "../pages/AppLoginPage";
 import { AppAccessAgreePage } from "../pages/AppAccessAgreePage";
 const fs = require("fs");
-// const crypto = require("crypto");
+const crypto = require("crypto");
 
 let page;
 
 test.beforeAll(async ({ browser, request }) => {
-  //   const state = crypto.randomBytes(8).toString();
   const clientId = process.env.NAVER_CLIENT_ID;
-  const state = "TEST";
+  const state = crypto.randomBytes(8).toString();
 
   // 네이버 로그인 인증 요청 => CODE 값 추출
   page = await browser.newPage();
@@ -24,6 +23,7 @@ test.beforeAll(async ({ browser, request }) => {
   await loginPage.goto();
   await loginPage.login(process.env.NAVER_ID, process.env.NAVER_PW);
 
+  // 앱 접근 동의 진행
   // const appAccessAgreePage = new AppAccessAgreePage(page);
   // await appAccessAgreePage.agreeCheckBox.click({ force: true });
   // await appAccessAgreePage.submitBtn.click();

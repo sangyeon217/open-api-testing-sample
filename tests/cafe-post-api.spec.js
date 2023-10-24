@@ -11,7 +11,7 @@ let page;
 test.beforeAll(async ({ browser, request }) => {
   //   const state = crypto.randomBytes(8).toString();
   const clientId = process.env.NAVER_CLIENT_ID;
-  const redirectUrl = process.env.REDIRECT_URL;
+  const redirectURI = process.env.REDIRECT_URI;
   const state = "TEST";
 
   // 네이버 로그인 인증 요청 => CODE 값 추출
@@ -19,7 +19,7 @@ test.beforeAll(async ({ browser, request }) => {
   const loginPage = new AppLoginPage({
     page: page,
     clientId: clientId,
-    redirectURI: redirectUrl,
+    redirectURI: redirectURI,
     state: state,
   });
   await loginPage.goto();
@@ -40,7 +40,7 @@ test.beforeAll(async ({ browser, request }) => {
     grantType: "authorization_code",
     clientId: clientId,
     clientSecret: process.env.NAVER_CLIENT_SECRET,
-    redirectURI: redirectUrl,
+    redirectURI: redirectURI,
     code: code,
     state: state,
   });

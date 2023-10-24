@@ -18,8 +18,8 @@ test.beforeAll(async ({ browser, request }) => {
   const loginPage = new AppLoginPage({
     page: page,
     clientId: clientId,
-    redirectURI: process.env.REDIRECT_URI,
-    state: state,
+    redirectURI: encodeURI(process.env.REDIRECT_URI),
+    state: encodeURI(state),
   });
   await loginPage.goto();
   await loginPage.login(process.env.NAVER_ID, process.env.NAVER_PW);
@@ -36,7 +36,7 @@ test.beforeAll(async ({ browser, request }) => {
     clientId: clientId,
     clientSecret: process.env.NAVER_CLIENT_SECRET,
     code: code,
-    state: state,
+    state: encodeURI(state),
   });
   const response = await request.post(authTokenAPI.url);
   const responseBody = await response.json();
@@ -63,7 +63,7 @@ test.afterAll(async ({ request }) => {
     grantType: "delete",
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.NAVER_CLIENT_SECRET,
-    accessToken: accessToken,
+    accessToken: encodeURI(accessToken),
   });
   const response = await request.post(authTokenAPI.url);
   const responseBody = await response.json();
